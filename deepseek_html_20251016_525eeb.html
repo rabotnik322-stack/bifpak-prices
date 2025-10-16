@@ -13,23 +13,23 @@
         
         body {
             background: #f5f5f5;
-            padding: 10px;
+            padding: 0;
+            margin: 0;
+            width: 100%;
         }
         
         .container {
             width: 100%;
-            max-width: 100%;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
+            min-height: 100vh;
         }
         
         .header {
             background: #2c3e50;
             color: white;
-            padding: 20px;
+            padding: 20px 15px;
             text-align: center;
+            width: 100%;
         }
         
         .header h1 {
@@ -41,6 +41,7 @@
             padding: 15px;
             background: #ecf0f1;
             border-bottom: 1px solid #bdc3c7;
+            width: 100%;
         }
         
         #searchInput {
@@ -57,31 +58,36 @@
             padding: 12px 15px;
             font-size: 18px;
             font-weight: bold;
+            width: 100%;
         }
         
-        .table-container {
+        .table-wrapper {
             width: 100%;
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
         
         .price-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 14px;
+            min-width: 800px;
         }
         
         .price-table th {
             background: #ecf0f1;
-            padding: 10px 8px;
+            padding: 12px 8px;
             text-align: center;
             border: 1px solid #bdc3c7;
             font-weight: bold;
+            white-space: nowrap;
         }
         
         .price-table td {
-            padding: 8px 6px;
+            padding: 10px 8px;
             text-align: center;
             border: 1px solid #ecf0f1;
+            white-space: nowrap;
         }
         
         .price-table tr:nth-child(even) {
@@ -106,9 +112,11 @@
         .volume-badge {
             background: #3498db;
             color: white;
-            padding: 2px 6px;
-            border-radius: 3px;
+            padding: 3px 8px;
+            border-radius: 4px;
             font-size: 11px;
+            display: inline-block;
+            min-width: 50px;
         }
         
         .footer {
@@ -117,10 +125,54 @@
             background: #ecf0f1;
             color: #7f8c8d;
             font-size: 12px;
+            width: 100%;
         }
         
         .highlight {
             background: #fff3cd !important;
+        }
+
+        /* Адаптивность для мобильных */
+        @media (max-width: 768px) {
+            .price-table {
+                font-size: 12px;
+                min-width: 700px;
+            }
+            
+            .price-table th,
+            .price-table td {
+                padding: 8px 4px;
+            }
+            
+            .volume-badge {
+                font-size: 10px;
+                padding: 2px 4px;
+                min-width: 40px;
+            }
+            
+            .header h1 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .price-table {
+                font-size: 11px;
+                min-width: 650px;
+            }
+            
+            .price-table th,
+            .price-table td {
+                padding: 6px 3px;
+            }
+            
+            .header {
+                padding: 15px 10px;
+            }
+            
+            .header h1 {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
@@ -139,7 +191,7 @@
             <div class="category-header">
                 Zip-Lock пакеты с бегунком
             </div>
-            <div class="table-container">
+            <div class="table-wrapper">
                 <table class="price-table">
                     <thead>
                         <tr>
@@ -180,7 +232,7 @@
             <div class="category-header">
                 Курьерские пакеты
             </div>
-            <div class="table-container">
+            <div class="table-wrapper">
                 <table class="price-table">
                     <thead>
                         <tr>
