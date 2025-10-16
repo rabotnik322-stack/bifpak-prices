@@ -1,221 +1,146 @@
-<!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>БИФ ПАК - Прайс-лист</title>
+    <title>БИФПАК Прайс-Лист</title>
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 15px;
-            line-height: 1.4;
+            background: #f5f5f5;
+            padding: 10px;
         }
         
         .container {
+            width: 100%;
             max-width: 100%;
-            margin: 0 auto;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             overflow: hidden;
         }
         
         .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            background: #2c3e50;
             color: white;
-            padding: 20px 15px;
+            padding: 20px;
             text-align: center;
         }
         
         .header h1 {
-            font-size: 1.8em;
+            font-size: 24px;
             margin-bottom: 5px;
-            font-weight: 700;
-        }
-        
-        .header p {
-            font-size: 1em;
-            opacity: 0.9;
         }
         
         .search-container {
             padding: 15px;
-            background: #f8f9fa;
-            border-bottom: 1px solid #e9ecef;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            background: #ecf0f1;
+            border-bottom: 1px solid #bdc3c7;
         }
         
         #searchInput {
             width: 100%;
-            padding: 12px 15px;
+            padding: 12px;
             font-size: 16px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            outline: none;
-            background: white;
-        }
-        
-        #searchInput:focus {
-            border-color: #3498db;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
-        }
-        
-        .category {
-            margin: 0;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
         }
         
         .category-header {
-            background: #2c3e50;
+            background: #34495e;
             color: white;
             padding: 12px 15px;
-            font-size: 1.1em;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: bold;
         }
         
         .table-container {
-            overflow-x: auto;
             width: 100%;
+            overflow-x: auto;
         }
         
         .price-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 14px;
-            min-width: 600px;
         }
         
         .price-table th {
             background: #ecf0f1;
-            padding: 10px 6px;
+            padding: 10px 8px;
             text-align: center;
-            font-weight: 600;
-            border: 1px solid #ddd;
-            font-size: 12px;
+            border: 1px solid #bdc3c7;
+            font-weight: bold;
         }
         
         .price-table td {
             padding: 8px 6px;
             text-align: center;
-            border: 1px solid #ddd;
-            font-size: 13px;
+            border: 1px solid #ecf0f1;
         }
         
         .price-table tr:nth-child(even) {
             background: #f8f9fa;
         }
         
-        .price-table tr:hover {
+        .size-header {
+            font-weight: bold;
             background: #e3f2fd;
         }
         
-        .size-header {
-            font-weight: 600;
-            color: #2c3e50;
-            background: #f1f8ff !important;
-        }
-        
         .price {
-            font-weight: 600;
+            font-weight: bold;
             color: #27ae60;
         }
         
         .packaging {
-            color: #666;
-            font-size: 11px;
-            background: #fff3e0 !important;
+            font-size: 12px;
+            color: #7f8c8d;
         }
         
         .volume-badge {
-            display: inline-block;
-            padding: 2px 6px;
             background: #3498db;
             color: white;
-            border-radius: 6px;
-            font-size: 10px;
-            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 11px;
         }
         
         .footer {
             text-align: center;
             padding: 15px;
-            background: #f8f9fa;
-            color: #666;
-            border-top: 1px solid #e9ecef;
+            background: #ecf0f1;
+            color: #7f8c8d;
             font-size: 12px;
         }
         
         .highlight {
             background: #fff3cd !important;
-            animation: highlight 1s ease;
-        }
-        
-        @keyframes highlight {
-            0% { background: #ffeb3b; }
-            100% { background: #fff3cd; }
-        }
-
-        /* Мобильная оптимизация */
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-            
-            .header {
-                padding: 15px 10px;
-            }
-            
-            .header h1 {
-                font-size: 1.5em;
-            }
-            
-            .search-container {
-                padding: 10px;
-            }
-            
-            #searchInput {
-                font-size: 14px;
-                padding: 10px 12px;
-            }
-            
-            .price-table {
-                font-size: 12px;
-            }
-            
-            .price-table th,
-            .price-table td {
-                padding: 6px 4px;
-                font-size: 11px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>БИФ ПАК</h1>
-            <p>Упаковочные материалы - Прайс-лист</p>
+            <h1>БИФПАК Прайс-Лист</h1>
+            <p>Упаковочные материалы</p>
         </div>
         
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="🔍 Поиск по размеру (например: 20x30, 40x50)...">
+            <input type="text" id="searchInput" placeholder="Поиск по размеру (например: 20x30)">
         </div>
         
         <div class="category">
             <div class="category-header">
-                📦 Zip-Lock пакеты с бегунком
+                Zip-Lock пакеты с бегунком
             </div>
             <div class="table-container">
-                <table class="price-table" id="zipLockTable">
+                <table class="price-table">
                     <thead>
                         <tr>
                             <th>Размер</th>
@@ -253,10 +178,10 @@
         
         <div class="category">
             <div class="category-header">
-                📮 Курьерские пакеты
+                Курьерские пакеты
             </div>
             <div class="table-container">
-                <table class="price-table" id="courierTable">
+                <table class="price-table">
                     <thead>
                         <tr>
                             <th>Размер</th>
@@ -293,40 +218,27 @@
         </div>
         
         <div class="footer">
-            <p>БИФ ПАК &copy; 2024 | Прайс-лист обновляется автоматически</p>
+            <p>БИФПАК &copy; 2024</p>
         </div>
     </div>
 
     <script>
-        // Поиск по таблицам
         document.getElementById('searchInput').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase().trim();
-            const tables = [
-                document.getElementById('zipLockTable'), 
-                document.getElementById('courierTable')
-            ];
+            var searchTerm = e.target.value.toLowerCase();
+            var tables = document.querySelectorAll('.price-table');
             
-            tables.forEach(table => {
-                if (!table) return;
+            tables.forEach(function(table) {
+                var rows = table.querySelectorAll('tbody tr');
                 
-                const tbody = table.querySelector('tbody');
-                if (!tbody) return;
-                
-                const rows = tbody.getElementsByTagName('tr');
-                
-                for (let row of rows) {
-                    const sizeCell = row.querySelector('.size-header');
+                rows.forEach(function(row) {
+                    var sizeCell = row.querySelector('.size-header');
                     if (sizeCell) {
-                        const sizeText = sizeCell.textContent.toLowerCase();
+                        var sizeText = sizeCell.textContent.toLowerCase();
                         
-                        if (searchTerm === '' || sizeText.includes(searchTerm)) {
+                        if (searchTerm === '' || sizeText.indexOf(searchTerm) > -1) {
                             row.style.display = '';
-                            if (searchTerm !== '' && sizeText.includes(searchTerm)) {
+                            if (searchTerm !== '') {
                                 row.classList.add('highlight');
-                                // Плавная прокрутка к найденному элементу
-                                setTimeout(() => {
-                                    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                }, 100);
                             } else {
                                 row.classList.remove('highlight');
                             }
@@ -335,26 +247,8 @@
                             row.classList.remove('highlight');
                         }
                     }
-                }
+                });
             });
-        });
-
-        // Автофокус на поле поиска при загрузке
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('searchInput');
-            if (searchInput) {
-                searchInput.focus();
-            }
-        });
-
-        // Обработка нажатия Enter в поле поиска
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const highlighted = document.querySelector('.highlight');
-                if (highlighted) {
-                    highlighted.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }
         });
     </script>
 </body>
