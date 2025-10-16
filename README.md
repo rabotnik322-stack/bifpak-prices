@@ -1,1 +1,339 @@
-# bifpak-prices
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>БИФ ПАК - Прайс-лист</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .search-container {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        #searchInput {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        #searchInput:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+        }
+        
+        .category {
+            margin: 0;
+        }
+        
+        .category-header {
+            background: #34495e;
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .category-header i {
+            font-size: 1.2em;
+        }
+        
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        
+        .price-table th {
+            background: #ecf0f1;
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: 600;
+            border-bottom: 2px solid #bdc3c7;
+            position: sticky;
+            top: 0;
+        }
+        
+        .price-table td {
+            padding: 10px 8px;
+            text-align: center;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .price-table tr:hover {
+            background: #f8f9fa;
+            transform: scale(1.01);
+            transition: all 0.2s ease;
+        }
+        
+        .price-table tr:nth-child(even) {
+            background: #fafbfc;
+        }
+        
+        .size-header {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .price {
+            font-weight: 600;
+            color: #27ae60;
+        }
+        
+        .packaging {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        
+        .volume-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #3498db;
+            color: white;
+            border-radius: 10px;
+            font-size: 0.8em;
+            margin: 1px;
+        }
+        
+        @media (max-width: 768px) {
+            .price-table {
+                font-size: 12px;
+            }
+            
+            .price-table th,
+            .price-table td {
+                padding: 8px 4px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .price-table {
+                font-size: 11px;
+            }
+            
+            .price-table th,
+            .price-table td {
+                padding: 6px 2px;
+            }
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #6c757d;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .highlight {
+            background: #fff3cd !important;
+            animation: highlight 2s ease;
+        }
+        
+        @keyframes highlight {
+            0% { background: #ffeb3b; }
+            100% { background: #fff3cd; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>БИФ ПАК</h1>
+            <p>Упаковочные материалы - Прайс-лист</p>
+        </div>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="🔍 Поиск по размеру (например: 20x30, 40x50)...">
+        </div>
+        
+        <div class="category">
+            <div class="category-header">
+                📦 Zip-Lock пакеты с бегунком
+            </div>
+            <div class="table-container">
+                <table class="price-table" id="zipLockTable">
+                    <thead>
+                        <tr>
+                            <th>Размер</th>
+                            <th><span class="volume-badge">10.000+</span></th>
+                            <th><span class="volume-badge">50.000+</span></th>
+                            <th><span class="volume-badge">100.000+</span></th>
+                            <th><span class="volume-badge">500.000+</span></th>
+                            <th>Фасовка</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="size-header">10x15</td><td class="price">1,35 ₽</td><td class="price">1,23 ₽</td><td class="price">1,18 ₽</td><td class="price">1,13 ₽</td><td class="packaging">7000 шт/мешок</td></tr>
+                        <tr><td class="size-header">15x20</td><td class="price">2,19 ₽</td><td class="price">1,99 ₽</td><td class="price">1,92 ₽</td><td class="price">1,84 ₽</td><td class="packaging">5000 шт/мешок</td></tr>
+                        <tr><td class="size-header">17x25</td><td class="price">2,62 ₽</td><td class="price">2,38 ₽</td><td class="price">2,29 ₽</td><td class="price">2,20 ₽</td><td class="packaging">4500 шт/мешок</td></tr>
+                        <tr><td class="size-header">20x20</td><td class="price">2,87 ₽</td><td class="price">2,61 ₽</td><td class="price">2,51 ₽</td><td class="price">2,41 ₽</td><td class="packaging">3500 шт/мешок</td></tr>
+                        <tr><td class="size-header">20x25</td><td class="price">2,87 ₽</td><td class="price">2,61 ₽</td><td class="price">2,51 ₽</td><td class="price">2,41 ₽</td><td class="packaging">3000 шт/мешок</td></tr>
+                        <tr><td class="size-header">20x30</td><td class="price">3,63 ₽</td><td class="price">3,30 ₽</td><td class="price">3,17 ₽</td><td class="price">3,05 ₽</td><td class="packaging">3000 шт/мешок</td></tr>
+                        <tr><td class="size-header">25x25</td><td class="price">3,88 ₽</td><td class="price">3,53 ₽</td><td class="price">3,39 ₽</td><td class="price">3,26 ₽</td><td class="packaging">2500 шт/мешок</td></tr>
+                        <tr><td class="size-header">25x30</td><td class="price">4,02 ₽</td><td class="price">3,65 ₽</td><td class="price">3,51 ₽</td><td class="price">3,37 ₽</td><td class="packaging">2500 шт/мешок</td></tr>
+                        <tr><td class="size-header">25x35</td><td class="price">4,73 ₽</td><td class="price">4,30 ₽</td><td class="price">4,13 ₽</td><td class="price">3,97 ₽</td><td class="packaging">2500 шт/мешок</td></tr>
+                        <tr><td class="size-header">30x30</td><td class="price">5,23 ₽</td><td class="price">4,76 ₽</td><td class="price">4,57 ₽</td><td class="price">4,39 ₽</td><td class="packaging">2500 шт/мешок</td></tr>
+                        <tr><td class="size-header">30x35</td><td class="price">5,23 ₽</td><td class="price">4,76 ₽</td><td class="price">4,57 ₽</td><td class="price">4,39 ₽</td><td class="packaging">2500 шт/мешок</td></tr>
+                        <tr><td class="size-header">30x40</td><td class="price">5,40 ₽</td><td class="price">4,91 ₽</td><td class="price">4,72 ₽</td><td class="price">4,53 ₽</td><td class="packaging">2500 шт/мешок</td></tr>
+                        <tr><td class="size-header">35x40</td><td class="price">6,92 ₽</td><td class="price">6,29 ₽</td><td class="price">6,05 ₽</td><td class="price">5,81 ₽</td><td class="packaging">2000 шт/мешок</td></tr>
+                        <tr><td class="size-header">35x45</td><td class="price">7,60 ₽</td><td class="price">6,90 ₽</td><td class="price">6,64 ₽</td><td class="price">6,37 ₽</td><td class="packaging">2000 шт/мешок</td></tr>
+                        <tr><td class="size-header">40x50</td><td class="price">10,13 ₽</td><td class="price">9,21 ₽</td><td class="price">8,85 ₽</td><td class="price">8,50 ₽</td><td class="packaging">1500 шт/мешок</td></tr>
+                        <tr><td class="size-header">40x60</td><td class="price">11,81 ₽</td><td class="price">10,74 ₽</td><td class="price">10,33 ₽</td><td class="price">9,91 ₽</td><td class="packaging">750 шт/мешок</td></tr>
+                        <tr><td class="size-header">45x65</td><td class="price">13,67 ₽</td><td class="price">12,43 ₽</td><td class="price">11,95 ₽</td><td class="price">11,47 ₽</td><td class="packaging">600 шт/мешок</td></tr>
+                        <tr><td class="size-header">50x60</td><td class="price">14,35 ₽</td><td class="price">13,04 ₽</td><td class="price">12,54 ₽</td><td class="price">12,04 ₽</td><td class="packaging">700 шт/мешок</td></tr>
+                        <tr><td class="size-header">70x70</td><td class="price">15,19 ₽</td><td class="price">13,81 ₽</td><td class="price">13,28 ₽</td><td class="price">12,75 ₽</td><td class="packaging">800 шт/мешок</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="category">
+            <div class="category-header">
+                📮 Курьерские пакеты
+            </div>
+            <div class="table-container">
+                <table class="price-table" id="courierTable">
+                    <thead>
+                        <tr>
+                            <th>Размер</th>
+                            <th><span class="volume-badge">10.000+</span></th>
+                            <th><span class="volume-badge">50.000+</span></th>
+                            <th><span class="volume-badge">100.000+</span></th>
+                            <th><span class="volume-badge">500.000+</span></th>
+                            <th>Фасовка</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="size-header">10х15</td><td class="price">0,89 ₽</td><td class="price">0,81 ₽</td><td class="price">0,78 ₽</td><td class="price">0,75 ₽</td><td class="packaging">5000 шт/коробка</td></tr>
+                        <tr><td class="size-header">11х21</td><td class="price">1,25 ₽</td><td class="price">1,14 ₽</td><td class="price">1,09 ₽</td><td class="price">1,05 ₽</td><td class="packaging">4000 шт/коробка</td></tr>
+                        <tr><td class="size-header">12х24</td><td class="price">1,38 ₽</td><td class="price">1,26 ₽</td><td class="price">1,21 ₽</td><td class="price">1,16 ₽</td><td class="packaging">3000 шт/коробка</td></tr>
+                        <tr><td class="size-header">15х21</td><td class="price">1,47 ₽</td><td class="price">1,33 ₽</td><td class="price">1,28 ₽</td><td class="price">1,23 ₽</td><td class="packaging">3000 шт/коробка</td></tr>
+                        <tr><td class="size-header">17х24</td><td class="price">1,69 ₽</td><td class="price">1,53 ₽</td><td class="price">1,48 ₽</td><td class="price">1,42 ₽</td><td class="packaging">2500 шт/коробка</td></tr>
+                        <tr><td class="size-header">19х24</td><td class="price">1,82 ₽</td><td class="price">1,66 ₽</td><td class="price">1,59 ₽</td><td class="price">1,53 ₽</td><td class="packaging">2000 шт/коробка</td></tr>
+                        <tr><td class="size-header">22х32</td><td class="price">2,75 ₽</td><td class="price">2,50 ₽</td><td class="price">2,40 ₽</td><td class="price">2,31 ₽</td><td class="packaging">1500 шт/коробка</td></tr>
+                        <tr><td class="size-header">25х35</td><td class="price">3,38 ₽</td><td class="price">3,07 ₽</td><td class="price">2,95 ₽</td><td class="price">2,83 ₽</td><td class="packaging">1000 шт/коробка</td></tr>
+                        <tr><td class="size-header">24х32</td><td class="price">2,90 ₽</td><td class="price">2,64 ₽</td><td class="price">2,54 ₽</td><td class="price">2,44 ₽</td><td class="packaging">1500 шт/коробка</td></tr>
+                        <tr><td class="size-header">25х40</td><td class="price">3,75 ₽</td><td class="price">3,41 ₽</td><td class="price">3,28 ₽</td><td class="price">3,14 ₽</td><td class="packaging">1000 шт/коробка</td></tr>
+                        <tr><td class="size-header">30х40</td><td class="price">4,46 ₽</td><td class="price">4,05 ₽</td><td class="price">3,89 ₽</td><td class="price">3,74 ₽</td><td class="packaging">1000 шт/коробка</td></tr>
+                        <tr><td class="size-header">34х46</td><td class="price">5,92 ₽</td><td class="price">5,39 ₽</td><td class="price">5,18 ₽</td><td class="price">4,97 ₽</td><td class="packaging">800 шт/коробка</td></tr>
+                        <tr><td class="size-header">35х50</td><td class="price">6,58 ₽</td><td class="price">5,98 ₽</td><td class="price">5,75 ₽</td><td class="price">5,52 ₽</td><td class="packaging">600 шт/коробка</td></tr>
+                        <tr><td class="size-header">40х50</td><td class="price">7,46 ₽</td><td class="price">6,78 ₽</td><td class="price">6,52 ₽</td><td class="price">6,26 ₽</td><td class="packaging">600 шт/коробка</td></tr>
+                        <tr><td class="size-header">43х50</td><td class="price">8,07 ₽</td><td class="price">7,33 ₽</td><td class="price">7,05 ₽</td><td class="price">6,77 ₽</td><td class="packaging">600 шт/коробка</td></tr>
+                        <tr><td class="size-header">45х65</td><td class="price">9,62 ₽</td><td class="price">8,75 ₽</td><td class="price">8,41 ₽</td><td class="price">8,07 ₽</td><td class="packaging">400 шт/коробка</td></tr>
+                        <tr><td class="size-header">50х60</td><td class="price">9,62 ₽</td><td class="price">8,75 ₽</td><td class="price">8,41 ₽</td><td class="price">8,07 ₽</td><td class="packaging">500 шт/коробка</td></tr>
+                        <tr><td class="size-header">50х70</td><td class="price">13,50 ₽</td><td class="price">12,28 ₽</td><td class="price">11,80 ₽</td><td class="price">11,33 ₽</td><td class="packaging">400 шт/коробка</td></tr>
+                        <tr><td class="size-header">60х60</td><td class="price">12,15 ₽</td><td class="price">11,05 ₽</td><td class="price">10,62 ₽</td><td class="price">10,20 ₽</td><td class="packaging">400 шт/коробка</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>БИФ ПАК &copy; 2024 - Обновлено автоматически</p>
+        </div>
+    </div>
+
+    <script>
+        // Поиск по таблицам
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            const tables = [document.getElementById('zipLockTable'), document.getElementById('courierTable')];
+            
+            tables.forEach(table => {
+                const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+                
+                for (let row of rows) {
+                    const sizeCell = row.getElementsByClassName('size-header')[0];
+                    if (sizeCell) {
+                        const sizeText = sizeCell.textContent.toLowerCase();
+                        
+                        if (searchTerm === '' || sizeText.includes(searchTerm)) {
+                            row.style.display = '';
+                            // Подсветка найденного элемента
+                            if (searchTerm !== '' && sizeText.includes(searchTerm)) {
+                                row.classList.add('highlight');
+                            } else {
+                                row.classList.remove('highlight');
+                            }
+                        } else {
+                            row.style.display = 'none';
+                            row.classList.remove('highlight');
+                        }
+                    }
+                }
+            });
+        });
+
+        // Автофокус на поле поиска при загрузке
+        window.addEventListener('load', function() {
+            document.getElementById('searchInput').focus();
+        });
+
+        // Плавная прокрутка к найденным элементам
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const highlighted = document.querySelector('.highlight');
+                if (highlighted) {
+                    highlighted.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
