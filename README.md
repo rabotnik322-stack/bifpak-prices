@@ -9,61 +9,65 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
         
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 15px;
+            line-height: 1.4;
         }
         
         .container {
             max-width: 100%;
             margin: 0 auto;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
             overflow: hidden;
         }
         
         .header {
             background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
             color: white;
-            padding: 25px 20px;
+            padding: 20px 15px;
             text-align: center;
         }
         
         .header h1 {
-            font-size: 2.2em;
+            font-size: 1.8em;
             margin-bottom: 5px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
         }
         
         .header p {
-            font-size: 1.1em;
+            font-size: 1em;
             opacity: 0.9;
         }
         
         .search-container {
-            padding: 20px;
+            padding: 15px;
             background: #f8f9fa;
             border-bottom: 1px solid #e9ecef;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         #searchInput {
             width: 100%;
-            padding: 12px 20px;
+            padding: 12px 15px;
             font-size: 16px;
-            border: 2px solid #e9ecef;
-            border-radius: 25px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
             outline: none;
-            transition: all 0.3s ease;
+            background: white;
         }
         
         #searchInput:focus {
             border-color: #3498db;
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
         }
         
         .category {
@@ -71,55 +75,53 @@
         }
         
         .category-header {
-            background: #34495e;
+            background: #2c3e50;
             color: white;
-            padding: 15px 20px;
-            font-size: 1.3em;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            padding: 12px 15px;
+            font-size: 1.1em;
+            font-weight: 600;
         }
         
-        .category-header i {
-            font-size: 1.2em;
+        .table-container {
+            overflow-x: auto;
+            width: 100%;
         }
         
         .price-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 14px;
+            min-width: 600px;
         }
         
         .price-table th {
             background: #ecf0f1;
-            padding: 12px 8px;
+            padding: 10px 6px;
             text-align: center;
             font-weight: 600;
-            border-bottom: 2px solid #bdc3c7;
-            position: sticky;
-            top: 0;
+            border: 1px solid #ddd;
+            font-size: 12px;
         }
         
         .price-table td {
-            padding: 10px 8px;
+            padding: 8px 6px;
             text-align: center;
-            border-bottom: 1px solid #ecf0f1;
-        }
-        
-        .price-table tr:hover {
-            background: #f8f9fa;
-            transform: scale(1.01);
-            transition: all 0.2s ease;
+            border: 1px solid #ddd;
+            font-size: 13px;
         }
         
         .price-table tr:nth-child(even) {
-            background: #fafbfc;
+            background: #f8f9fa;
+        }
+        
+        .price-table tr:hover {
+            background: #e3f2fd;
         }
         
         .size-header {
             font-weight: 600;
             color: #2c3e50;
+            background: #f1f8ff !important;
         }
         
         .price {
@@ -128,66 +130,72 @@
         }
         
         .packaging {
-            color: #7f8c8d;
-            font-size: 0.9em;
+            color: #666;
+            font-size: 11px;
+            background: #fff3e0 !important;
         }
         
         .volume-badge {
             display: inline-block;
-            padding: 2px 8px;
+            padding: 2px 6px;
             background: #3498db;
             color: white;
-            border-radius: 10px;
-            font-size: 0.8em;
-            margin: 1px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 600;
         }
         
-        @media (max-width: 768px) {
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            color: #666;
+            border-top: 1px solid #e9ecef;
+            font-size: 12px;
+        }
+        
+        .highlight {
+            background: #fff3cd !important;
+            animation: highlight 1s ease;
+        }
+        
+        @keyframes highlight {
+            0% { background: #ffeb3b; }
+            100% { background: #fff3cd; }
+        }
+
+        /* Мобильная оптимизация */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 15px 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .search-container {
+                padding: 10px;
+            }
+            
+            #searchInput {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+            
             .price-table {
                 font-size: 12px;
             }
             
             .price-table th,
             .price-table td {
-                padding: 8px 4px;
-            }
-            
-            .header h1 {
-                font-size: 1.8em;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-            
-            .price-table {
+                padding: 6px 4px;
                 font-size: 11px;
             }
-            
-            .price-table th,
-            .price-table td {
-                padding: 6px 2px;
-            }
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background: #f8f9fa;
-            color: #6c757d;
-            border-top: 1px solid #e9ecef;
-        }
-        
-        .highlight {
-            background: #fff3cd !important;
-            animation: highlight 2s ease;
-        }
-        
-        @keyframes highlight {
-            0% { background: #ffeb3b; }
-            100% { background: #fff3cd; }
         }
     </style>
 </head>
@@ -260,32 +268,32 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td class="size-header">10х15</td><td class="price">0,89 ₽</td><td class="price">0,81 ₽</td><td class="price">0,78 ₽</td><td class="price">0,75 ₽</td><td class="packaging">5000 шт/коробка</td></tr>
-                        <tr><td class="size-header">11х21</td><td class="price">1,25 ₽</td><td class="price">1,14 ₽</td><td class="price">1,09 ₽</td><td class="price">1,05 ₽</td><td class="packaging">4000 шт/коробка</td></tr>
-                        <tr><td class="size-header">12х24</td><td class="price">1,38 ₽</td><td class="price">1,26 ₽</td><td class="price">1,21 ₽</td><td class="price">1,16 ₽</td><td class="packaging">3000 шт/коробка</td></tr>
-                        <tr><td class="size-header">15х21</td><td class="price">1,47 ₽</td><td class="price">1,33 ₽</td><td class="price">1,28 ₽</td><td class="price">1,23 ₽</td><td class="packaging">3000 шт/коробка</td></tr>
-                        <tr><td class="size-header">17х24</td><td class="price">1,69 ₽</td><td class="price">1,53 ₽</td><td class="price">1,48 ₽</td><td class="price">1,42 ₽</td><td class="packaging">2500 шт/коробка</td></tr>
-                        <tr><td class="size-header">19х24</td><td class="price">1,82 ₽</td><td class="price">1,66 ₽</td><td class="price">1,59 ₽</td><td class="price">1,53 ₽</td><td class="packaging">2000 шт/коробка</td></tr>
-                        <tr><td class="size-header">22х32</td><td class="price">2,75 ₽</td><td class="price">2,50 ₽</td><td class="price">2,40 ₽</td><td class="price">2,31 ₽</td><td class="packaging">1500 шт/коробка</td></tr>
-                        <tr><td class="size-header">25х35</td><td class="price">3,38 ₽</td><td class="price">3,07 ₽</td><td class="price">2,95 ₽</td><td class="price">2,83 ₽</td><td class="packaging">1000 шт/коробка</td></tr>
-                        <tr><td class="size-header">24х32</td><td class="price">2,90 ₽</td><td class="price">2,64 ₽</td><td class="price">2,54 ₽</td><td class="price">2,44 ₽</td><td class="packaging">1500 шт/коробка</td></tr>
-                        <tr><td class="size-header">25х40</td><td class="price">3,75 ₽</td><td class="price">3,41 ₽</td><td class="price">3,28 ₽</td><td class="price">3,14 ₽</td><td class="packaging">1000 шт/коробка</td></tr>
-                        <tr><td class="size-header">30х40</td><td class="price">4,46 ₽</td><td class="price">4,05 ₽</td><td class="price">3,89 ₽</td><td class="price">3,74 ₽</td><td class="packaging">1000 шт/коробка</td></tr>
-                        <tr><td class="size-header">34х46</td><td class="price">5,92 ₽</td><td class="price">5,39 ₽</td><td class="price">5,18 ₽</td><td class="price">4,97 ₽</td><td class="packaging">800 шт/коробка</td></tr>
-                        <tr><td class="size-header">35х50</td><td class="price">6,58 ₽</td><td class="price">5,98 ₽</td><td class="price">5,75 ₽</td><td class="price">5,52 ₽</td><td class="packaging">600 шт/коробка</td></tr>
-                        <tr><td class="size-header">40х50</td><td class="price">7,46 ₽</td><td class="price">6,78 ₽</td><td class="price">6,52 ₽</td><td class="price">6,26 ₽</td><td class="packaging">600 шт/коробка</td></tr>
-                        <tr><td class="size-header">43х50</td><td class="price">8,07 ₽</td><td class="price">7,33 ₽</td><td class="price">7,05 ₽</td><td class="price">6,77 ₽</td><td class="packaging">600 шт/коробка</td></tr>
-                        <tr><td class="size-header">45х65</td><td class="price">9,62 ₽</td><td class="price">8,75 ₽</td><td class="price">8,41 ₽</td><td class="price">8,07 ₽</td><td class="packaging">400 шт/коробка</td></tr>
-                        <tr><td class="size-header">50х60</td><td class="price">9,62 ₽</td><td class="price">8,75 ₽</td><td class="price">8,41 ₽</td><td class="price">8,07 ₽</td><td class="packaging">500 шт/коробка</td></tr>
-                        <tr><td class="size-header">50х70</td><td class="price">13,50 ₽</td><td class="price">12,28 ₽</td><td class="price">11,80 ₽</td><td class="price">11,33 ₽</td><td class="packaging">400 шт/коробка</td></tr>
-                        <tr><td class="size-header">60х60</td><td class="price">12,15 ₽</td><td class="price">11,05 ₽</td><td class="price">10,62 ₽</td><td class="price">10,20 ₽</td><td class="packaging">400 шт/коробка</td></tr>
+                        <tr><td class="size-header">10x15</td><td class="price">0,89 ₽</td><td class="price">0,81 ₽</td><td class="price">0,78 ₽</td><td class="price">0,75 ₽</td><td class="packaging">5000 шт/коробка</td></tr>
+                        <tr><td class="size-header">11x21</td><td class="price">1,25 ₽</td><td class="price">1,14 ₽</td><td class="price">1,09 ₽</td><td class="price">1,05 ₽</td><td class="packaging">4000 шт/коробка</td></tr>
+                        <tr><td class="size-header">12x24</td><td class="price">1,38 ₽</td><td class="price">1,26 ₽</td><td class="price">1,21 ₽</td><td class="price">1,16 ₽</td><td class="packaging">3000 шт/коробка</td></tr>
+                        <tr><td class="size-header">15x21</td><td class="price">1,47 ₽</td><td class="price">1,33 ₽</td><td class="price">1,28 ₽</td><td class="price">1,23 ₽</td><td class="packaging">3000 шт/коробка</td></tr>
+                        <tr><td class="size-header">17x24</td><td class="price">1,69 ₽</td><td class="price">1,53 ₽</td><td class="price">1,48 ₽</td><td class="price">1,42 ₽</td><td class="packaging">2500 шт/коробка</td></tr>
+                        <tr><td class="size-header">19x24</td><td class="price">1,82 ₽</td><td class="price">1,66 ₽</td><td class="price">1,59 ₽</td><td class="price">1,53 ₽</td><td class="packaging">2000 шт/коробка</td></tr>
+                        <tr><td class="size-header">22x32</td><td class="price">2,75 ₽</td><td class="price">2,50 ₽</td><td class="price">2,40 ₽</td><td class="price">2,31 ₽</td><td class="packaging">1500 шт/коробка</td></tr>
+                        <tr><td class="size-header">25x35</td><td class="price">3,38 ₽</td><td class="price">3,07 ₽</td><td class="price">2,95 ₽</td><td class="price">2,83 ₽</td><td class="packaging">1000 шт/коробка</td></tr>
+                        <tr><td class="size-header">24x32</td><td class="price">2,90 ₽</td><td class="price">2,64 ₽</td><td class="price">2,54 ₽</td><td class="price">2,44 ₽</td><td class="packaging">1500 шт/коробка</td></tr>
+                        <tr><td class="size-header">25x40</td><td class="price">3,75 ₽</td><td class="price">3,41 ₽</td><td class="price">3,28 ₽</td><td class="price">3,14 ₽</td><td class="packaging">1000 шт/коробка</td></tr>
+                        <tr><td class="size-header">30x40</td><td class="price">4,46 ₽</td><td class="price">4,05 ₽</td><td class="price">3,89 ₽</td><td class="price">3,74 ₽</td><td class="packaging">1000 шт/коробка</td></tr>
+                        <tr><td class="size-header">34x46</td><td class="price">5,92 ₽</td><td class="price">5,39 ₽</td><td class="price">5,18 ₽</td><td class="price">4,97 ₽</td><td class="packaging">800 шт/коробка</td></tr>
+                        <tr><td class="size-header">35x50</td><td class="price">6,58 ₽</td><td class="price">5,98 ₽</td><td class="price">5,75 ₽</td><td class="price">5,52 ₽</td><td class="packaging">600 шт/коробка</td></tr>
+                        <tr><td class="size-header">40x50</td><td class="price">7,46 ₽</td><td class="price">6,78 ₽</td><td class="price">6,52 ₽</td><td class="price">6,26 ₽</td><td class="packaging">600 шт/коробка</td></tr>
+                        <tr><td class="size-header">43x50</td><td class="price">8,07 ₽</td><td class="price">7,33 ₽</td><td class="price">7,05 ₽</td><td class="price">6,77 ₽</td><td class="packaging">600 шт/коробка</td></tr>
+                        <tr><td class="size-header">45x65</td><td class="price">9,62 ₽</td><td class="price">8,75 ₽</td><td class="price">8,41 ₽</td><td class="price">8,07 ₽</td><td class="packaging">400 шт/коробка</td></tr>
+                        <tr><td class="size-header">50x60</td><td class="price">9,62 ₽</td><td class="price">8,75 ₽</td><td class="price">8,41 ₽</td><td class="price">8,07 ₽</td><td class="packaging">500 шт/коробка</td></tr>
+                        <tr><td class="size-header">50x70</td><td class="price">13,50 ₽</td><td class="price">12,28 ₽</td><td class="price">11,80 ₽</td><td class="price">11,33 ₽</td><td class="packaging">400 шт/коробка</td></tr>
+                        <tr><td class="size-header">60x60</td><td class="price">12,15 ₽</td><td class="price">11,05 ₽</td><td class="price">10,62 ₽</td><td class="price">10,20 ₽</td><td class="packaging">400 шт/коробка</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
         
         <div class="footer">
-            <p>БИФ ПАК &copy; 2024 - Обновлено автоматически</p>
+            <p>БИФ ПАК &copy; 2024 | Прайс-лист обновляется автоматически</p>
         </div>
     </div>
 
@@ -293,21 +301,32 @@
         // Поиск по таблицам
         document.getElementById('searchInput').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase().trim();
-            const tables = [document.getElementById('zipLockTable'), document.getElementById('courierTable')];
+            const tables = [
+                document.getElementById('zipLockTable'), 
+                document.getElementById('courierTable')
+            ];
             
             tables.forEach(table => {
-                const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+                if (!table) return;
+                
+                const tbody = table.querySelector('tbody');
+                if (!tbody) return;
+                
+                const rows = tbody.getElementsByTagName('tr');
                 
                 for (let row of rows) {
-                    const sizeCell = row.getElementsByClassName('size-header')[0];
+                    const sizeCell = row.querySelector('.size-header');
                     if (sizeCell) {
                         const sizeText = sizeCell.textContent.toLowerCase();
                         
                         if (searchTerm === '' || sizeText.includes(searchTerm)) {
                             row.style.display = '';
-                            // Подсветка найденного элемента
                             if (searchTerm !== '' && sizeText.includes(searchTerm)) {
                                 row.classList.add('highlight');
+                                // Плавная прокрутка к найденному элементу
+                                setTimeout(() => {
+                                    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }, 100);
                             } else {
                                 row.classList.remove('highlight');
                             }
@@ -321,11 +340,14 @@
         });
 
         // Автофокус на поле поиска при загрузке
-        window.addEventListener('load', function() {
-            document.getElementById('searchInput').focus();
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.focus();
+            }
         });
 
-        // Плавная прокрутка к найденным элементам
+        // Обработка нажатия Enter в поле поиска
         document.getElementById('searchInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 const highlighted = document.querySelector('.highlight');
